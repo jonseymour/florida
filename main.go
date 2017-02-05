@@ -177,12 +177,12 @@ func accounting(n int, girls bool) func(in <-chan *family, done chan<- struct{})
 		}
 		fmt.Fprintf(
 			os.Stdin,
-			"[%s] n=%d, c=%d, gg=%d (%f)\n",
+			"[%s] n=%d, c=%d, gg=%d, gg/c=%0.1f%%\n",
 			tn,
 			n,
 			c,
 			gg,
-			float64(gg)/float64(c))
+			float64(gg)/float64(c)*100.0)
 		done <- struct{}{}
 	}
 }

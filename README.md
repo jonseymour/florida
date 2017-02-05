@@ -10,10 +10,10 @@ the construction of the pipeline to reflect different filtering criteria. A stre
 random families is generated and filtered by the pipeline and a summary of the
 resulting population statistics are written to stdout. For example:
 
-	[families] n=1000000, c=1000000, gg=249557 (0.249557)
+	[families] n=1000000, c=1000000, gg=249506, gg/c=25.0%
 
 This means 1,000,000 random families were generated, 1,000,000 were selected by the
-filtering pipeline. Of these 249,557 were girl-girl families - a proportion of ~25%.
+filtering pipeline. Of these 249,506 were girl-girl families - a proportion of ~25%.
 
 The `--at-least-one-girl` flag selects only families which have at least one girl. 
 
@@ -69,19 +69,20 @@ are specified. The list items are stage names which are described next.
 
 `atLeastOneGirl` excludes any family that does not have at least one girl.
 
+`floridaFamilies` excludes any family that does not have a girl named Florida.
+
 `family2child` writes one child entry for each of a family's 2 children into a child channel.
 
 `girls` excludes any child that is not a girl.
 
 `florida` excludes any child that is not a girl named Florida.
 
-`floridaFamilies` excludes any family that does not have a girl named Florida.
-
 `child2family` writes one family entry for each child into a family channel. Note that no attempt is made to 
 eliminate duplicates that result from two children having the same family - the resulting statistics are statistics about children not families.
 
-`accounting` counts the number of families with different characteristics and displays these numbers along with certain ratios. Note that some families may be double counted if the `--girls` option is specified. This is because if `--girls` is specified we are (effectively) counting girls rather than families.
+`accounting` calculates statistics for the selected families(/girls) and displays a summary. 
 
+`n` is the number of generated families, `c` is the number of selected families(/girls), `gg` is the number of selected girl-girl families(/girls with female siblings), `gg/c` is ratio of `gg` over `c` expressed as a percentage. A `[families]` or `[girls]` indicator is used to indicate whether the population being summarised is a population of families or a population of girls.
 
 #PROBLEMS
 ## Problem #1
