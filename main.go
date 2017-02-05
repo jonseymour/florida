@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"math/rand"
 	"os"
 )
@@ -49,14 +48,6 @@ func (f *family) isGG() bool {
 	return f.first.girl && f.second.girl
 }
 
-func (f *family) presentRandomOrder() (*child, *child) {
-	if coinFlip() {
-		return f.first, f.second
-	} else {
-		return f.second, f.first
-	}
-}
-
 // returns true roughly half the time
 func coinFlip() bool {
 	for {
@@ -70,7 +61,7 @@ func coinFlip() bool {
 }
 
 // generates a stream of families
-func generateFamilies(n int) func(out chan<- *family) {
+func generate(n int) func(out chan<- *family) {
 	return func(out chan<- *family) {
 		for i := 0; i < n; i++ {
 			f := &family{
@@ -99,7 +90,7 @@ func atLeastOneGirl() func(in <-chan *family, out chan<- *family) {
 }
 
 // names each girl in a family
-func namingProcess(probability float64) func(in <-chan *family, out chan<- *family) {
+func name(probability float64) func(in <-chan *family, out chan<- *family) {
 	return func(in <-chan *family, out chan<- *family) {
 		for f := range in {
 			f.first.nameGirl(probability)
@@ -147,6 +138,18 @@ func florida() func(in <-chan *child, out chan<- *child) {
 	}
 }
 
+func floridaFamily() func(in <-chan *family, out chan<- *family) {
+	return func(in <-chan *family, out chan<- *family) {
+		for f := range in {
+			if !f.hasAGirlNamedFlorida() {
+				continue
+			}
+			out <- f
+		}
+		close(out)
+	}
+}
+
 // names each girl in a family
 func child2family() func(in <-chan *child, out chan<- *family) {
 	return func(in <-chan *child, out chan<- *family) {
@@ -158,45 +161,28 @@ func child2family() func(in <-chan *child, out chan<- *family) {
 }
 
 // accounting stage`
-func accounting(verbose bool, n int) func(in <-chan *family, done chan<- struct{}) {
+func accounting(n int, girls bool) func(in <-chan *family, done chan<- struct{}) {
 	return func(in <-chan *family, done chan<- struct{}) {
-		countTotal := 0
-		countGirlGirl := 0
-		countFlorida := 0
-		countGirlGirlFlorida := 0
-
-		report := func() {
-			fmt.Fprintf(
-				os.Stdin,
-				"n=%d, c=%d, gg=%d (%f), florida=%d (%f), florida && gg=%d (%f)\n",
-				n,
-				countTotal,
-				countGirlGirl,
-				float64(countGirlGirl)/float64(countTotal),
-				countFlorida,
-				float64(countFlorida)/float64(countTotal),
-				countGirlGirlFlorida,
-				float64(countGirlGirlFlorida)/float64(countFlorida))
-		}
-
+		c := 0
+		gg := 0
 		for f := range in {
-			countTotal++
-			gg := false
+			c++
 			if f.isGG() {
-				countGirlGirl++
-				gg = true
-			}
-			if f.hasAGirlNamedFlorida() {
-				countFlorida++
-				if gg {
-					countGirlGirlFlorida++
-				}
-				if verbose {
-					report()
-				}
+				gg++
 			}
 		}
-		report()
+		tn := "families"
+		if girls {
+			tn = "girls"
+		}
+		fmt.Fprintf(
+			os.Stdin,
+			"[%s] n=%d, c=%d, gg=%d (%f)\n",
+			tn,
+			n,
+			c,
+			gg,
+			float64(gg)/float64(c))
 		done <- struct{}{}
 	}
 }
@@ -204,45 +190,50 @@ func accounting(verbose bool, n int) func(in <-chan *family, done chan<- struct{
 func main() {
 	var probability float64
 	var n int
-	var verbose bool
 	var girlsFlag bool
 	var floridaFlag bool
+	var atLeastOneGirlFlag bool
 
 	flag.Float64Var(&probability, "probability", 0.001, "Probability of naming a girl florida.")
 	flag.IntVar(&n, "families", 1000000, "Number of families.")
 	flag.BoolVar(&girlsFlag, "girls", false, "Select girls, not families.")
 	flag.BoolVar(&floridaFlag, "florida", false, "Select girls named Florida.")
-	flag.BoolVar(&verbose, "verbose", false, "Enable verbose output.")
+	flag.BoolVar(&atLeastOneGirlFlag, "at-least-one-girl", false, "Select families with at least one girl.")
 	flag.Parse()
-
-	if floridaFlag && !girlsFlag {
-		log.Fatalf("--florida is only valid if --girls is also specified.")
-	}
 
 	p1 := make(chan *family)
 	p2 := make(chan *family)
 	p3 := make(chan *family)
 	done := make(chan struct{})
 
-	go generateFamilies(n)(p1)
-	go namingProcess(probability)(p1, p2)
-	go atLeastOneGirl()(p2, p3)
+	go generate(n)(p1)
+	go name(probability)(p1, p2)
+	if atLeastOneGirlFlag {
+		p4 := make(chan *family)
+		go atLeastOneGirl()(p2, p4)
+		p3 = p4
+	} else {
+		p3 = p2
+	}
 	if girlsFlag {
 		p4 := make(chan *child)
 		p5 := make(chan *family)
 		p7 := make(chan *child)
 
 		go family2child()(p3, p7)
-		go girls()(p7, p4)
 		if floridaFlag {
-			p6 := make(chan *child)
-			go florida()(p4, p6)
-			p4 = p6
+			go florida()(p7, p4)
+		} else {
+			go girls()(p7, p4)
 		}
 		go child2family()(p4, p5)
 		p3 = p5
+	} else if floridaFlag {
+		p4 := make(chan *family)
+		go floridaFamily()(p3, p4)
+		p3 = p4
 	}
-	go accounting(verbose, n)(p3, done)
+	go accounting(n, girlsFlag)(p3, done)
 
 	<-done
 }
