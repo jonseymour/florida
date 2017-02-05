@@ -89,7 +89,7 @@ A) You are told of a 2-child family that has at least one girl. What is the chan
 
 This question can be answered with: `florida --at-least-one-girl`
 
-B) You are then told that one of children is a girl named Florida. What is the chance Florida's sibling is also a girl?
+B) You are then told that one of children is a girl named Florida. What is the chance the family consists of 2 girls?
 
 This question can be answered with: `florida --florida`
 
@@ -98,6 +98,6 @@ A) You are told of a girl who has exactly one sibling. What is the chance the gi
 
 This question can be answered with: `florida --girls`
 
-B) You are then told that the girl's name is Florida. What is the chance that Florida's sibling is also a girl?
+B) You are then told that the girl's name is Florida. What is the chance the girl's sibling is also a girl?
 
 This question can be answered with: `florida --girls --florida`
