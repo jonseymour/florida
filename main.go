@@ -158,7 +158,7 @@ func child2family() func(in <-chan *child, out chan<- *family) {
 }
 
 // accounting stage`
-func accounting(verbose bool) func(in <-chan *family, done chan<- struct{}) {
+func accounting(verbose bool, n int) func(in <-chan *family, done chan<- struct{}) {
 	return func(in <-chan *family, done chan<- struct{}) {
 		countTotal := 0
 		countGirlGirl := 0
@@ -168,7 +168,8 @@ func accounting(verbose bool) func(in <-chan *family, done chan<- struct{}) {
 		report := func() {
 			fmt.Fprintf(
 				os.Stdin,
-				"n=%d, gg=%d (%f), florida=%d (%f), florida && gg=%d (%f)\n",
+				"n=%d, c=%d, gg=%d (%f), florida=%d (%f), florida && gg=%d (%f)\n",
+				n,
 				countTotal,
 				countGirlGirl,
 				float64(countGirlGirl)/float64(countTotal),
@@ -208,7 +209,7 @@ func main() {
 	var floridaFlag bool
 
 	flag.Float64Var(&probability, "probability", 0.001, "Probability of naming a girl florida.")
-	flag.IntVar(&n, "iterations", 1000000, "Number of families.")
+	flag.IntVar(&n, "families", 1000000, "Number of families.")
 	flag.BoolVar(&girlsFlag, "girls", false, "Select girls, not families.")
 	flag.BoolVar(&floridaFlag, "florida", false, "Select girls named Florida.")
 	flag.BoolVar(&verbose, "verbose", false, "Enable verbose output.")
@@ -240,7 +241,7 @@ func main() {
 		go child2family()(p4, p5)
 		p3 = p5
 	}
-	go accounting(verbose)(p3, done)
+	go accounting(verbose, n)(p3, done)
 
 	<-done
 }
