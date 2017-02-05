@@ -222,19 +222,20 @@ func main() {
 	p1 := make(chan *family)
 	p2 := make(chan *family)
 	p3 := make(chan *family)
-	p4 := make(chan *child)
-	p5 := make(chan *family)
-	p6 := make(chan *child)
-	p7 := make(chan *child)
 	done := make(chan struct{})
 
 	go generateFamilies(n)(p1)
 	go namingProcess(probability)(p1, p2)
 	go atLeastOneGirl()(p2, p3)
 	if girlsFlag {
+		p4 := make(chan *child)
+		p5 := make(chan *family)
+		p7 := make(chan *child)
+
 		go family2child()(p3, p7)
 		go girls()(p7, p4)
 		if floridaFlag {
+			p6 := make(chan *child)
 			go florida()(p4, p6)
 			p4 = p6
 		}
