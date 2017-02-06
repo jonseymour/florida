@@ -32,6 +32,7 @@ func (c *child) isAGirlNamedFlorida() bool {
 
 // a family has exactly two children
 type family struct {
+	unique bool
 	first  *child
 	second *child
 }
@@ -105,6 +106,7 @@ func name(probability float64) func(in <-chan *family, out chan<- *family) {
 func family2child() func(in <-chan *family, out chan<- *child) {
 	return func(in <-chan *family, out chan<- *child) {
 		for f := range in {
+			f.unique = false
 			out <- f.first
 			out <- f.second
 		}
@@ -151,9 +153,16 @@ func floridaFamily() func(in <-chan *family, out chan<- *family) {
 }
 
 // names each girl in a family
-func child2family() func(in <-chan *child, out chan<- *family) {
+func child2family(unique bool) func(in <-chan *child, out chan<- *family) {
 	return func(in <-chan *child, out chan<- *family) {
 		for c := range in {
+			if !c.family.unique {
+				c.family.unique = true
+			} else {
+				if unique {
+					continue
+				}
+			}
 			out <- c.family
 		}
 		close(out)
@@ -192,6 +201,7 @@ func main() {
 	var n int
 	var girlsFlag bool
 	var floridaFlag bool
+	var uniqueFlag bool
 	var atLeastOneGirlFlag bool
 
 	flag.Float64Var(&probability, "probability", 0.001, "Probability of naming a girl florida.")
@@ -199,6 +209,7 @@ func main() {
 	flag.BoolVar(&girlsFlag, "girls", false, "Select girls, not families.")
 	flag.BoolVar(&floridaFlag, "florida", false, "Select girls named Florida.")
 	flag.BoolVar(&atLeastOneGirlFlag, "at-least-one-girl", false, "Select families with at least one girl.")
+	flag.BoolVar(&uniqueFlag, "count-families", false, "Count families not girls.")
 	flag.Parse()
 
 	p1 := make(chan *family)
@@ -226,14 +237,14 @@ func main() {
 		} else {
 			go girls()(p7, p4)
 		}
-		go child2family()(p4, p5)
+		go child2family(uniqueFlag)(p4, p5)
 		p3 = p5
 	} else if floridaFlag {
 		p4 := make(chan *family)
 		go floridaFamily()(p3, p4)
 		p3 = p4
 	}
-	go accounting(n, girlsFlag)(p3, done)
+	go accounting(n, girlsFlag && !uniqueFlag)(p3, done)
 
 	<-done
 }

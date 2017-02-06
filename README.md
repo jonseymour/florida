@@ -102,3 +102,7 @@ This question can be answered with: `florida --girls`
 B) You are then told that the girl's name is Florida. What is the chance the girl's sibling is also a girl?
 
 This question can be answered with: `florida --girls --florida`
+
+# DISCUSSION
+Since some people may not know the answers and may want to try reasoning about the problems for themselves,
+I defer discussion about the results to [another page](DISCUSSION.MD).
