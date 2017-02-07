@@ -6,6 +6,7 @@ The answers to the problems are:
 * 1B: ~50% or 1/2-e for some e < 1/6, depending on the probability parameter
 * 2A: 50% or 1/2
 * 2B: 50% or 1/2
+* 2C: same as 1B.
 
 # BAYESIAN ANALYSIS
 
@@ -90,7 +91,7 @@ The Bayesian answer to 1B is:
 
     If P(Gf) is small, then P(GG|Df) is ~= 1/2.
 
-    If P(Gf) is 1 then P(GG|Df) is 1/3 which comports the answer of with 1A.
+    If P(Gf) is 1 then P(GG|Df) is 1/3 which comports the answer 1A.
 
 The answer to 2A is:
 
@@ -100,17 +101,26 @@ The answer to 2B is:
 
     P(Gs) = 1/2
 
+The answer to 2C is the same as for 1B since this question is asking the sae question about 
+families that have the same properties as those described by 1B.
+
 # DISCUSSION
-The differences between Problem 1 and Problem 2 are explained by the fact that the first problem counts 2-child families whereas the second problem counts daughters of 2-child families and there are 4/3 as many daughters as their are families (because 2-girl families skew the count).
+The differences between Problem 1 and Problem 2 are explained by the fact that the first problem counts 2-child families whereas the second problem counts daughters of 2-child families. So, whereas girl-girl families
+comprise only 1/3 of the families with at least one girl, the girls of girl-girl families comprise 1/2 of the
+girls of such families.
 
-There is a curious difference between the answers to 1B and 2B. The answer for 1B depends on the probability of a girl being named Florida, whereas 2B does not. It is interesting to ponder why the probability matters for case 1B but not for case 2B when, in some sense, the questions are the same. 2B could be turned into a question about a family simply by adding the words "... Florida who is the daughter of 2-child family. What is the chance the 
-family she is a daughter of is a girl-girl family."
+There is, on cursory inspection, a curious difference between the answers to 1B and 2B. The answer for 1B depends on the probability of a girl being named Florida, whereas 2B does not even though the questions seem quite
+similar. It is interesting to ponder why the probability matters for case 1B but not for case 2B when, in some sense, the questions are the same. 2B could be turned into a question about a family simply by changing this:
 
-In fact, you can do this with the simulator by adding a `--count-families` flag which causes the simulator to count the family of each girl in the selected population and to do so at most once. This transforms the stream of
-girls into a stream of families.
+ "You are then told that the girl's name is Florida. What is the chance the girl's sibling is also a girl?"
 
-Observe first how the 2B answer is stable even if the probability is varied. At this point we are still counting 
-girls:
+To this:
+
+ "You are then told that the girl's name is Florida. What is the chance the girl's family has two girls?"
+
+In fact, you can do this with the simulator by specifying a `--unique-families` flag which causes the simulator to count the family of each girl in the selected population and to count each family at most once. This transforms a stream of girls back into a stream of families.
+
+Observe first how the 2B answer is stable even if the probability of a girl name Florida is varied. At this point we are still counting girls:
 
     $ florida --girls --florida --probability 0.001
     [girls] n=1000000, c=1026, gg=519, gg/c=50.6%
@@ -121,15 +131,16 @@ girls:
     $ florida --girls --florida --probability 1
     [girls] n=1000000, c=999610, gg=497864, gg/c=49.8%
 
-Now, let's add the --count-families flag and observe what happens when we count each family of selected girls just once and we vary the probability of girls being named "Florida":
+Now, let's add the --unique-families flag and observe what happens when we count each family of selected girls just once and we vary the probability of girls being named "Florida":
 
-    $ florida --girls --florida --count-families --probability 1
-    [families] n=1000000, c=750278, gg=249059, gg/c=33.2%    
-
-    $ florida --girls --florida --count-families --probability 0.5
-    [families] n=1000000, c=437237, gg=187253, gg/c=42.8%
-
-    $ florida --girls --florida --count-families --probability 0.001
+    $ florida --girls --florida --unique-families --probability 0.001
     [families] n=1000000, c=1025, gg=517, gg/c=50.4%
 
-In other words, even in 2B, the variation of 1B is in the data, provided you filter the data it in the right way.
+    $ florida --girls --florida --unique-families --probability 0.5
+    [families] n=1000000, c=437237, gg=187253, gg/c=42.8%
+
+    $ florida --girls --florida --unique-families --probability 1
+    [families] n=1000000, c=750278, gg=249059, gg/c=33.2%    
+
+
+In other words, the statistics of the population are still sensitive to the probability of a girl named Florida if you ask the right question of the members of the population. In this case, if you ask a question about the girls themselves, you get one set of statistics, but if you ask about their families you get another. 
