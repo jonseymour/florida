@@ -103,7 +103,7 @@ B) You are then told that the girl's name is Florida. What is the chance the Flo
 
 This question can be answered with: `florida --girls --florida`
 
-C) What is the chance the Florida's family has exactly two girls?
+C) What is the chance that Florida's family has exactly two girls?
 
 This question can be answered with: `florida --girls --florida --unique-families`
 
