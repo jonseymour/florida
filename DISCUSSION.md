@@ -112,13 +112,14 @@ girls of such families.
 There is, on cursory inspection, a curious difference between the answers to 1B and 2B. The answer for 1B depends on the probability of a girl being named Florida, whereas 2B does not even though the questions seem quite
 similar. It is interesting to ponder why the probability matters for case 1B but not for case 2B when, in some sense, the questions are the same. 2B could be turned into a question about a family simply by changing this:
 
- "You are then told that the girl's name is Florida. What is the chance the girl's sibling is also a girl?"
+  _You are then told that the girl's name is Florida. What is the chance that Florida's sibling is also a girl?_
 
-To this:
+to this:
 
- "You are then told that the girl's name is Florida. What is the chance the girl's family has two girls?"
+  _You are then told that the girl's name is Florida. What is the chance that Florida's family has two girls?_
 
-In fact, you can do this with the simulator by specifying a `--unique-families` flag which causes the simulator to count the family of each girl in the selected population and to count each family at most once. This transforms a stream of girls back into a stream of families.
+In fact, you can do this with the simulator by specifying a `--unique-families` flag which causes the simulator to count the families of each girl in the selected population exactly once which transforms the population
+of girls into the population of their families.
 
 Observe first how the 2B answer is stable even if the probability of a girl name Florida is varied. At this point we are still counting girls:
 
@@ -143,4 +144,4 @@ Now, let's add the --unique-families flag and observe what happens when we count
     [families] n=1000000, c=750278, gg=249059, gg/c=33.2%    
 
 
-In other words, the statistics of the population are still sensitive to the probability of a girl named Florida if you ask the right question of the members of the population. In this case, if you ask a question about the girls themselves, you get one set of statistics, but if you ask about their families you get another. 
+In other words, the statistics of the population of girls are still sensitive to the probability of a girl named Florida if you ask the right question of the members of the population. In this case, if you ask a question about the girls themselves, you get one set of statistics, but if you ask about their families you get another. 
