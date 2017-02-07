@@ -109,4 +109,4 @@ This question can be answered with: `florida --girls --florida --unique-families
 
 # DISCUSSION
 Since some people may not know the answers and may want to try reasoning about the problems for themselves,
-I defer discussion about the results to [another page](DISCUSSION.MD).
+I defer discussion about the results to [another page](DISCUSSION.md).
