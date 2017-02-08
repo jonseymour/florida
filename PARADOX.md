@@ -132,6 +132,27 @@ The inconsistencies between Q1,Q2 and Q3,Q4 can be resolved if we assume the pri
 
             = 1/3
 
-A similar argument can be used to revise P(Cg|S) to 1/3 also. So, we resolved the apparent paradox in the previous
-solution to Q5 and there was some justification for doing so since the equivalence of Cg anf Yg seemed sound. Still, if not for the contradiction, the previously selected priors could also have been justified. The decision
-to switch the priors from 1/2 to 1/3 is, in some sense (I think), arbitrary.
+A similar argument can be used to revise P(Cg|S) to 1/3 also. So, we resolved the apparent paradox in the previous solution to Q5 and there was some justification for doing so since the equivalence of Cg anf Yg seemed sound. Still, if not for the contradiction, the previously selected priors could also have been justified. The decision to switch the priors from 1/2 to 1/3 is, in some sense (I think), arbitrary.
+
+---
+
+Modification of the priors feels like the wrong way to address the inconsistency. A better way to address it is to set the likelihoods in a similar way that they are set for Q1 and Q2, so:
+
+	P(Gg|S) = P(S|Gg).P(Gg)
+	          -------------
+	              P(S)
+
+	P(S) = P(S|Gg).P(Gg)+P(S|Gb).P(Gb)
+
+	P(S|Gg) = P(Ygg)/(P(Ygg)+P(Ygb)+P(Ybg)) = 1/3
+	P(S|Gb) = (P(Ygb)+P(Ybg))/(P(Ygg)+P(Ygb)+P(Ybg)) = 2/3
+
+	P(Gg) = 1/2
+	P(Gb) = 1 - P(Gg) = 1/2
+
+	P(Gg|S) = 1/2 * 1/3
+	          --------------
+	          1/2 * 1/3 + 1/2 * 2/3
+
+	        = 1/3
+
