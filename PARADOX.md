@@ -68,15 +68,17 @@ Q3: Determine P(Gg|S).
 
     P(S) = P(S|Gg).P(Gg)+P(S|Gb).P(Gb)
 
-    P(S|Gg) = 1
-    P(S|Gb) = 1
+    P(S|Gg) = 1/2
+    P(S|Gb) = 1/2
 
     P(Gg) = 1/2
     P(Gb) = 1 - P(Gg) = 1/2
 
-    P(Gg|S) = 1/2
+    P(Gg|S) = 1/4
               -------
-              1/2+1/2
+              1/4+1/4
+
+            = 2/4
 
             = 1/2
 
@@ -88,15 +90,17 @@ Q4: Determine P(Cg|S).
 
     P(S) = P(S|Cg).P(Cg)+P(S|Cb).P(Cb)
 
-    P(S|Cg) = 1
-    P(S|Cb) = 1
+    P(S|Cg) = 1/2
+    P(S|Cb) = 1/2
 
     P(Cg) = 1/2
     P(Cb) = 1 - P(Cg) = 1/2
 
-    P(Cg|S) = 1/2
+    P(Cg|S) = 1/4
               -------
-              1/2+1/2
+              1/4+1/4
+
+            = 2/4 
 
             = 1/2
 
@@ -120,15 +124,15 @@ The inconsistencies between Q1,Q2 and Q3,Q4 can be resolved if we assume the pri
 
     P(S) = P(S|Gg).P(Gg)+P(S|Gb).P(Gb)
 
-    P(S|Gg) = 1
-    P(S|Gb) = 1
+    P(S|Gg) = 1/2
+    P(S|Gb) = 1/2
 
     P(Gg) = 1/3
     P(Gb) = 1 - P(Gg) = 2/3
 
-    P(Gg|S) = 1/3
-              -------
-              1/3+2/3
+    P(Gg|S) = 1/2 * 1/3
+              ---------------------
+              1/2 * 1/3 + 2/3 * 1/2
 
             = 1/3
 
