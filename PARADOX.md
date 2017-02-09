@@ -1,6 +1,8 @@
-# Which World Do You Live In?
+# Constructing The Paradox That Wasn't
 
-There exists a world W. In that world there exist many families. All families have exactly one mother and exactly one father. Each family has exactly two children. Each child is either a boy or a girl - the gender being determined at random at conception. 50% of all children are boys, 50% are girls. There are 4-types of family, classified by the gender of the children sorted in birth order: BB, BG, GB, GG. B+G is describes the type that includes both BG and GB when the birth order is not important. There are equally many BB, BG, GB and GG families. There are twice as many B+G families as either BB or separately GG families.
+## Which World Do You Live In?
+
+There exists a world W. In that world there exist many families. All families have exactly one mother and exactly one father. Each family has exactly two children. Each child is either a boy or a girl - the gender being determined at random at conception. 50% of all children are boys, 50% are girls. There are 4-types of family, classified by the gender of the children sorted in birth order: BB, BG, GB, GG. There are equally many BB, BG, GB and GG families. 
 
 Consider the following statements which may or may not be true. You can assume the first is true.
 
@@ -33,9 +35,9 @@ Q1: Determine P(Ygg|S).
     P(Ybb) = P(Ybg) = P(Ygg) = P(Ybb) = 1/4
 
 
-    P(Ygg|S) = 1/4
-               -----
-               1/4+1/4+1/4
+    P(Ygg|S) =       1/4
+               ---------------
+               1/4 + 1/4 + 1/4
 
              = 1/3
 
@@ -74,9 +76,9 @@ Q3: Determine P(Gg|S).
     P(Gg) = 1/2
     P(Gb) = 1 - P(Gg) = 1/2
 
-    P(Gg|S) = 1/2
-              -------
-              1/2+1/2
+    P(Gg|S) =    1/2
+              ---------
+              1/2 + 1/2
 
             = 1/2
 
@@ -94,9 +96,9 @@ Q4: Determine P(Cg|S).
     P(Cg) = 1/2
     P(Cb) = 1 - P(Cg) = 1/2
 
-    P(Cg|S) = 1/2
-              -------
-              1/2+1/2
+    P(Cg|S) =    1/2
+              ---------
+              1/2 + 1/2
 
             = 1/2
 
@@ -112,7 +114,14 @@ Why?
 
 ---
 
-The inconsistencies between Q1,Q2 and Q3,Q4 can be resolved if we assume the priors P(Gg) and P(Cg) are determined by P(Ygg|S) = 1/3 on the basis that we expect that Cg is true iff Yg is true. For example:
+# No, There Is No Paradox
+
+However, there is no paradox - just errors. The next sections document attempts to fix the errors
+that lead to the inconsistency.
+
+## First Attempt
+
+The inconsistencies between Q1,Q2 and Q3,Q4 can be resolved if we assume the priors P(Gg) and P(Cg) are determined by P(Ygg|S) = 1/3 on the basis that we expect that Gg is true iff Ygg is true. For example:
 
 	P(Gg|S) = P(S|Gg).P(Gg)
 	          -------------
@@ -128,15 +137,24 @@ The inconsistencies between Q1,Q2 and Q3,Q4 can be resolved if we assume the pri
 
     P(Gg|S) =    1/3
               ---------
-              1/3 + 1/2
+              1/3 + 1/3
 
             = 1/3
 
-A similar argument can be used to revise P(Cg|S) to 1/3 also. So, we resolved the apparent paradox in the previous solution to Q5 and there was some justification for doing so since the equivalence of Cg anf Yg seemed sound. Still, if not for the contradiction, the previously selected priors could also have been justified. The decision to switch the priors from 1/2 to 1/3 is, in some sense (I think), arbitrary.
+A similar argument can be used to revise P(Cg|S) to 1/3 also. 
 
----
+So, we resolved the apparent paradox in the previous solution to Q5 and there was some justification for doing so since the equivalence of Gg and Ygg seemed sound. 
 
-Modification of the priors feels like the wrong way to address the inconsistency. A better way to address it is to set the likelihoods in a similar way that they are set for Q1 and Q2, so:
+**Note, however, that the reasoning of the above attempt was faulty!**
+
+## Second Attempt
+
+The first attempt to fix the inconsistency produced the correct answer, however, the method was flawed. 
+There is no justification for modifying the priors in this case, and certainly not by deriving it from the answer we obtained from the other methods - effectively assuming the answer.
+
+The actual error is that the formulae for the likiehoods were incorrect and failed to take account of the fact that both P(S|Gg) and P(S|Gb) should be different given that there is only one way S|Gg can occur and 2 ways S|Gb can occur.
+
+To correct this error, note that Gg <=> Ygg and Ygg is the only Y case where both Gg and S can be simultaneously true. Conversely, Gb <=> Ygb or Ybg and S can be true if either Ygb or Ybg is true. So, we can use these facts to derive P(S|Gg) and P(S|Gb) and thus P(Gg|S).
 
 	P(Gg|S) = P(S|Gg).P(Gg)
 	          -------------
@@ -144,15 +162,33 @@ Modification of the priors feels like the wrong way to address the inconsistency
 
 	P(S) = P(S|Gg).P(Gg)+P(S|Gb).P(Gb)
 
-	P(S|Gg) = P(Ygg)/(P(Ygg)+P(Ygb)+P(Ybg)) = 1/3
-	P(S|Gb) = (P(Ygb)+P(Ybg))/(P(Ygg)+P(Ygb)+P(Ybg)) = 2/3
+	P(S|Gg) =          P(Ygg)
+		      ------------------------
+			  P(Ygg) + P(Ygb) + P(Ybg)
 
-	P(Gg) = 1/2
-	P(Gb) = 1 - P(Gg) = 1/2
+			=       1/4
+			  ---------------
+			  1/4 + 1/4 + 1/4
 
-	P(Gg|S) = 1/2 * 1/3
-	          --------------
+			= 1/3
+
+	P(S|Gb) =     P(Ygb) + P(Ybg)
+		      ------------------------
+			  P(Ygg) + P(Ygb) + P(Ybg)
+
+			=       2/4
+			  ---------------
+			  1/4 + 1/4 + 1/4
+
+			= 2/3
+
+
+	P(Gb) = P(Gg) = 1/2
+
+	P(Gg|S) =       1/2 * 1/3
+	          ---------------------
 	          1/2 * 1/3 + 1/2 * 2/3
 
 	        = 1/3
 
+A similar argument can be made for P(Cg|S), yielding the consistent result of 1/3 for Q4 also.
