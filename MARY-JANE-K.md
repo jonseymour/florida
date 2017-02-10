@@ -1,8 +1,7 @@
 # Mary, Jane and K
 
-At birth, there is an equal chance that either a boy or a girl will be born. Therefore, in a large population of 2-child families there will be the same
-number of boy-boy, boy-girl, girl-boy and girl-girl families, where x-y
-means that gender x was born first, gender y was born second. 
+At birth, there is an equal chance that either a boy or a girl will be born. Therefore, in a large population of 2-child families there will be the same number of boy-boy, boy-girl, girl-boy and girl-girl families, where x-y
+means that a child of gender x was born first, a child of gender y was born second. 
 
 The following helps to visualise the different type of 2-child families:
 
