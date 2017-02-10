@@ -114,12 +114,22 @@ Why?
 
 ---
 
-# No, There Is No Paradox
+# However, There Is No Paradox
 
-However, there is no paradox - just errors. The next sections document attempts to fix the errors
+However, there is no paradox - just thinking errors. The next sections document attempts to fix the errors
 that lead to the inconsistency.
 
-## First Attempt
+## The Errors
+
+If we believe in a sane world, then: P(Cg|S) = P(Gg|S) = P(Mgg|S) = P(Ygg|S) = P(Wgg|S).
+
+The arguments for the answers in Q1 and Q2 seem sound - the priors are sound and the likelihoods are reasonable and the application of Bayes rule seems correct.
+
+In the first attempt to fix the inconsistency, we adjusted the priors and re-did the Bayesian analysis.
+
+## First Attempt - Adjusting The Priors (Faulty)
+
+_Note: The prior is the P(H) term of a Bayesian analysis, where P(H|E) = P(E|H).P(H)/P(E)._
 
 The inconsistencies between Q1,Q2 and Q3,Q4 can be resolved if we assume the priors P(Gg) and P(Cg) are determined by P(Ygg|S) = 1/3 on the basis that we expect that Gg is true iff Ygg is true. For example:
 
@@ -145,16 +155,17 @@ A similar argument can be used to revise P(Cg|S) to 1/3 also.
 
 So, we resolved the apparent paradox in the previous solution to Q5 and there was some justification for doing so since the equivalence of Gg and Ygg seemed sound. 
 
-**Note, however, that the reasoning of the above attempt was faulty!**
+**However, this attempt is faulty.**
 
-## Second Attempt
-
-The first attempt to fix the inconsistency produced the correct answer, however, the method was flawed. 
 There is no justification for modifying the priors in this case, and certainly not by deriving it from the answer we obtained from the other methods - effectively assuming the answer.
 
-The actual error is that the formulae for the likiehoods were incorrect and failed to take account of the fact that both P(S|Gg) and P(S|Gb) should be different given that there is only one way S|Gg can occur and 2 ways S|Gb can occur.
+## Second Attempt - Adjusting The Likelihoods
 
-To correct this error, note that Gg <=> Ygg and Ygg is the only Y case where both Gg and S can be simultaneously true. Conversely, Gb <=> Ygb or Ybg and S can be true if either Ygb or Ybg is true. So, we can use these facts to derive P(S|Gg) and P(S|Gb) and thus P(Gg|S).
+_Note: The likelihood is the P(E|H) term of a Bayesian analysis, where P(H|E) = P(E|H).P(H)/P(E)._
+
+The actual error in the solution for Q3 is that the formulae for the likiehoods were incorrect and failed to take account of the fact that both P(S|Gg) and P(S|Gb) should be different given that there is only one way S|Gg can occur and 2 ways S|Gb can occur.
+
+To correct this error, note that Gg <=> Ygg and Ygg is the only Y__ case where both Gg and S can be simultaneously true. Conversely, Gb <=> (Ygb or Ybg) and S can be true if either Ygb or Ybg is true. So, we can use these facts to derive P(S|Gg) and P(S|Gb) and thus P(Gg|S).
 
 	P(Gg|S) = P(S|Gg).P(Gg)
 	          -------------
@@ -191,4 +202,12 @@ To correct this error, note that Gg <=> Ygg and Ygg is the only Y case where bot
 
 	        = 1/3
 
-A similar argument can be made for P(Cg|S), yielding the consistent result of 1/3 for Q4 also.
+A similar argument can be made for P(Cg|S), yielding the consistent result of 1/3 for Q4 also. If the answers to Q1-4 are all 1/3 then Q5 is uncontroversially also 1/3.
+
+##A Shorter Solution
+
+Of course, having identified the identity Cg = Gg = Mgg = Ygg = Wgg, the easiest way to calculate all of
+P(Cg|S), P(Gg|S), P(Mgg|S), P(Ygg|S), P(Wgg|S), is to calculate one, say, P(Ygg|S) and assume the rest 
+are equal to that solution. The reason it wasn't done in this particular case is that the analysis done here was
+motivated by a word problem that appeared to have a paradox and I wanted to see if I could reproduce
+the paradox with Bayesian analysis. The initial attempts did indeed produce an apparent paradox, but only because of errors I introduced along the way.
