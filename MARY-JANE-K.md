@@ -50,9 +50,7 @@ Q3. What is the chance that Miriam will answer "Yes" if asked: "Do you have 2 da
 ---
 ## Part C
 
-A mother, Mary, is selected at random from the set of mothers of a large population of 2-child families. Mary has a daughter, Jane, and another child K. K is the child's initial. K's gender is known to Mary and Jane, but not to us. 
-
-Mary, Jane and K. are exactly the same people from Part A.
+A mother, Mary, is selected at random from the set of mothers of a large population of 2-child families. As it happens Mary is the same Mary from part A, so has a daughter, Jane, and another child K. K is the child's initial. K's gender is known to Mary and Jane, but not to us. 
 
 Given what we know about 2-child families, Mary, Jane and K:
 
