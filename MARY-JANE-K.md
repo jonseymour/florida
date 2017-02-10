@@ -10,7 +10,7 @@ The following helps to visualise the different types of 2-child families where B
 
 ## Part A
 
-A girl, Jane, is picked at random from the set of children of a large population of 2-child families. Jane has a mum, Mary, and a sibling K. K is the sibling's initial. K's gender is known to Jane and Mary, but not to us. 
+A girl, Jane, is selected at random from the set of children of a large population of 2-child families. Jane has a mum, Mary, and a sibling K. K is the sibling's initial. K's gender is known to Jane and Mary, but not to us. 
 
 Given what we know about 2-child families, Jane, Mary and K:
 
@@ -29,7 +29,7 @@ Q3. What is the chance that Mary will answer "Yes" if asked: "Do you have 2 daug
 ---
 ## Part B
 
-A mother, Miriam, is picked at random from the set of mothers of a large population of 2-child families. Miriam has a daughter, Jennifer, and another child K. K is the child's initial. K's gender is known to Miriam and Jennifer, but not to us. 
+A mother, Miriam, is selected at random from the set of mothers of a large population of 2-child families. Miriam has a daughter, Jennifer, and another child K. K is the child's initial. K's gender is known to Miriam and Jennifer, but not to us. 
 
 Given what we know about 2-child families, Miriam, Jennifer and K:
 
@@ -48,7 +48,7 @@ Q3. What is the chance that Miriam will answer "Yes" if asked: "Do you have 2 da
 ---
 ## Part C
 
-A mother, Mary, is picked at random from the set of mothers of a large population of 2-child families. Mary has a daughter, Jane, and another child K. K is the child's initial. K's gender is known to Mary and Jane, but not to us. 
+A mother, Mary, is selected at random from the set of mothers of a large population of 2-child families. Mary has a daughter, Jane, and another child K. K is the child's initial. K's gender is known to Mary and Jane, but not to us. 
 
 Mary, Jane and K. are exactly the same people from Part A.
 
