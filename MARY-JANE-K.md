@@ -31,6 +31,8 @@ Q3. What is the chance that Mary will answer "Yes" if asked: "Do you have 2 daug
 
 A mother, Miriam, is selected at random from the set of mothers of a large population of 2-child families. Miriam has a daughter, Jennifer, and another child K. K is the child's initial. K's gender is known to Miriam and Jennifer, but not to us. 
 
+K referred to here is a different person to the K in part A.
+
 Given what we know about 2-child families, Miriam, Jennifer and K:
 
 Q1. What is the chance that K will answer "Yes" if asked: "Are you a girl?"
