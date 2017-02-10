@@ -32,7 +32,7 @@ where:
 
     H = the statement of the hypothesis
     E = the statement of the evidence
-    P(H) = the probability of the hypothesis in absence of the evidence evidence
+    P(H) = the probability of the hypothesis in absence of the evidence
     P(E) = probability of the evidence, independent of the hypothesis
     P(E|H) = probabity of the evidence, given the hypothesis is true
     P(H|E) = revised probability of the hypothesis, given the evidence.
