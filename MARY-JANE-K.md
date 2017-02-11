@@ -29,13 +29,11 @@ Q3. What is the chance that Mary will answer "Yes" if asked: "Do you have 2 daug
 ---
 ## Part B
 
-A mother, Miriam, is selected at random from the set of mothers of a large population of 2-child families. Miriam has a daughter, Jennifer, and another child K. K is the child's initial. K's gender is known to Miriam and Jennifer, but not to us. 
+A mother, Miriam, is selected at random from the set of mothers of a large population of 2-child families. Miriam has a daughter, Jennifer, and another child L. L is the child's initial. L's gender is known to Miriam and Jennifer, but not to us. 
 
-K referred to here is a different person to the K in part A.
+Given what we know about 2-child families, Miriam, Jennifer and L:
 
-Given what we know about 2-child families, Miriam, Jennifer and K:
-
-Q1. What is the chance that K will answer "Yes" if asked: "Are you a girl?"
+Q1. What is the chance that L will answer "Yes" if asked: "Are you a girl?"
 
   A) 1/2 B) 1/3	C) 1/4 D) 3/4
 
@@ -45,25 +43,46 @@ Q2. What is the chance that Jennifer will answer "Yes" if asked: "Do you have a 
 
 Q3. What is the chance that Miriam will answer "Yes" if asked: "Do you have 2 daughters?"
 
- A) 3/4 B) 1/4 C) 1/3 D) 1/2
+  A) 3/4 B) 1/4 C) 1/3 D) 1/2
 
 ---
 ## Part C
 
-A mother, Mary, is selected at random from the set of mothers of a large population of 2-child families. As it happens Mary is the same Mary from part A, so has a daughter, Jane, and another child K. K is the child's initial. K's gender is known to Mary and Jane, but not to us. 
+A mother, Mc, is selected at random from the set of mothers of a large population of 2-child families. Mc so has a daughter, Jc, and another child Kc. Mc, Jc and Kc are all pseudonyms. Kc's gender is known to Mc and Jc, but not to us. 
 
-Given what we know about 2-child families, Mary, Jane and K:
+Given what we know about 2-child families, Mc, Hc and Kc:
 
-Q1. What is the chance that K will answer "Yes" if asked: "Are you a girl?"
+Q1. What is the chance that Kc will answer "Yes" if asked: "Are you a girl?"
 
-  A) 1/2 B) 1/3	C) 1/4 D) something else
+  A) 1/2 B) 1/3	C) 1/4 D) 3/4
 
-Q2. What is the chance that Jane will answer "Yes" if asked: "Do you have a sister?"
+Q2. What is the chance that Jc will answer "Yes" if asked: "Do you have a sister?"
 
-  A) 1/3 B) 1/4 C) 1/2 D) something else
+  A) 1/3 B) 3/4 C) 1/2 D) 1/4
 
-Q3. What is the chance that Mary will answer "Yes" if asked: "Do you have 2 daughters?"
+Q3. What is the chance that Mc will answer "Yes" if asked: "Do you have 2 daughters?"
 
- A) 1/2 B) 1/4 C) 1/3 D) something else
+  A) 3/4 B) 1/4 C) 1/3 D) 1/2
 
-          
+----
+## Part D
+
+**If you multiply the answer to Part A/Q1, Part B/Q2 and Part C/Q3 and you get either 1/8 or 1/27 you probably have the "wrong" answer. Contact [Jon](mailto:jon.seymour@gmail.com) to discuss before proceeding since Part D will be more interesting that way.**
+
+You are handed a key which decodes the pseudonyms used in Part C - similar to the process the Australian Government will use to link your Census responses to third party data sources - along with all details relevant
+to Part A and Part C, including the means by the which the random selections of Jane and Mc/Mary were performed.
+
+It turns out that Mc = Mary, Jc = Jane and Kc = K, all from Part A of this question.
+
+Q1. What is the chance that K/Kc will answer "Yes" if asked: "Are you a girl?"
+	
+	A) Same as Part A/Q1. B) Same as Part C/Q1. C) NFI. D) Other.
+
+Q2. What is the chance that Jane/Jc will answer "Yes" if asked: "Do you have a sister?"
+
+	A) Same as Part A/Q2. B) Same as Part C/Q2. C) NFI. D) Other.
+
+Q3. What is the chance that Mary/Mc will answer "Yes" if asked: "Do you have 2 daughters?"
+
+	A) Same as Part A/Q3. B) Same as Part C/Q3. C) NFI. D) Other.
+
