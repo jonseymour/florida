@@ -81,13 +81,13 @@ It turns out that Mc = Mary, Jc = Jane and Kc = K, all from Part A of this quest
 
 Q1. What is the chance that K/Kc will answer "Yes" if asked: "Are you a girl?"
 	
-	A) Same as Part A/Q1. B) Same as Part C/Q1. C) NFI. D) Other.
+  A) Same as Part A/Q1. B) Same as Part C/Q1. C) NFI. D) Other.
 
 Q2. What is the chance that Jane/Jc will answer "Yes" if asked: "Do you have a sister?"
 
-	A) Same as Part A/Q2. B) Same as Part C/Q2. C) NFI. D) Other.
+  A) Same as Part A/Q2. B) Same as Part C/Q2. C) NFI. D) Other.
 
 Q3. What is the chance that Mary/Mc will answer "Yes" if asked: "Do you have 2 daughters?"
 
-	A) Same as Part A/Q3. B) Same as Part C/Q3. C) NFI. D) Other.
+  A) Same as Part A/Q3. B) Same as Part C/Q3. C) NFI. D) Other.
 
