@@ -31,6 +31,9 @@ Q3. What is the chance that Mary will answer "Yes" if asked: "Do you have 2 daug
 
 A mother, Miriam, is selected at random from the set of mothers of a large population of 2-child families. Miriam has a daughter, Jennifer, and another child L. L is the child's initial. L's gender is known to Miriam and Jennifer, but not to us. 
 
+If Miriam has one daughter, Jennifer is that daughter. If she has two daughters, Jennifer is the daughter selected
+with a coin flip. The selection process does not permit the selection of mothers with 2 boys.
+
 Given what we know about 2-child families, Miriam, Jennifer and L:
 
 Q1. What is the chance that L will answer "Yes" if asked: "Are you a girl?"
@@ -50,6 +53,9 @@ Q3. What is the chance that Miriam will answer "Yes" if asked: "Do you have 2 da
 
 A mother, Mc, is selected at random from the set of mothers of a large population of 2-child families. Mc so has a daughter, Jc, and another child Kc. Mc, Jc and Kc are all pseudonyms. Kc's gender is known to Mc and Jc, but not to us. 
 
+If Mc has one daughter, Jc is that daughter. If she has two daughters, Jc is the daughter selected
+with a coin flip. The selection process does not permit the selection of mothers with 2 boys.
+
 Given what we know about 2-child families, Mc, Hc and Kc:
 
 Q1. What is the chance that Kc will answer "Yes" if asked: "Are you a girl?"
@@ -67,10 +73,9 @@ Q3. What is the chance that Mc will answer "Yes" if asked: "Do you have 2 daught
 ----
 ## Part D
 
-**If you multiply the answer to Part A/Q1, Part B/Q2 and Part C/Q3 and you get either 1/8 or 1/27 you probably have the "wrong" answer. Contact [Jon](mailto:jon.seymour@gmail.com) to discuss before proceeding since Part D will be more interesting that way.**
+**If you multiply the answer to Part A/Q1, Part B/Q2 and Part C/Q3 and you get either 1/8 or 1/27 you may have the "wrong" answer. Contact [Jon](mailto:jon.seymour@gmail.com) to discuss before proceeding since Part D will be more interesting that way.**
 
-You are handed a key which decodes the pseudonyms used in Part C - similar to the process the Australian Government will use to link your Census responses to third party data sources - along with all details relevant
-to Part A and Part C, including the means by the which the random selections of Jane and Mc/Mary were performed.
+You are handed a key which decodes the pseudonyms used in Part C - similar to the process the Australian Government will use to link your Census responses to third party data sources - along with all details relevant to Part A and Part C, including the means by the which the random selections of Jc/Jane and Mc/Mary were performed.
 
 It turns out that Mc = Mary, Jc = Jane and Kc = K, all from Part A of this question.
 
