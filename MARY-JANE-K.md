@@ -51,7 +51,7 @@ Q3. What is the chance that Miriam will answer "Yes" if asked: "Do you have 2 da
 ---
 ## Part C
 
-A mother, Mc, is selected at random from the set of mothers of a large population of 2-child families. Mc so has a daughter, Jc, and another child Kc. Mc, Jc and Kc are all pseudonyms. Kc's gender is known to Mc and Jc, but not to us. 
+A mother, Mc, is selected at random from the set of mothers of a large population of 2-child families. Mc has a daughter, Jc, and another child Kc. Mc, Jc and Kc are all pseudonyms. Kc's gender is known to Mc and Jc, but not to us. 
 
 If Mc has one daughter, Jc is that daughter. If she has two daughters, Jc is the daughter selected
 with a coin flip. The selection process does not permit the selection of mothers with 2 boys.
