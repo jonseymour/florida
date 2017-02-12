@@ -29,4 +29,4 @@ According to Part A, K has a 1/2 chance of being a girl, according to Part C/D, 
 One way to deal with the contradiction is to deny it is really a contradiction as we did when we explained away the difference between Part A and Part B above - we were sampling different abstract processes, so the fact that we get
 different abstract answers is not surprising.
 
-However, Part D is still troubling, since we have sampled two different processes that have yielded two different models of the same concrete family. One asks us to believe the family will behave one way with probability 1/2, the other asks us to beieve they will behave that same way with probability of only 1/3. What now, are we meant believe about how the family will behave?
+However, Part D is still troubling, since we have sampled two different abstract processes that have yielded two different probabilistic models of the same concrete family. One asks us to believe the family will behave one way with probability 1/2, the other asks us to beieve they will behave that same way with probability of only 1/3. What now, are we meant believe about how the family will behave?
