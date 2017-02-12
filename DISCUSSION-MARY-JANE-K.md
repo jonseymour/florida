@@ -36,9 +36,68 @@ It should be noted that if Part C is accurate about the "selection at random" th
 
 ## The Empirical Answer
 
-One way to answer the question empirically is to run a simulation with the "florida" program which has been updated
-with support for the kind of matching implied by Part D of the problem. In particular, it generates a large number of 2 person families and creates large slices of both families and daughters. It then samples each a large number of times and outputs whenever there is a match between a selection from the family pool and a selection from the daughter pool. 
+One way to answer the question empirically is to run a simulation with the "florida" program which has been updated with support for the kind of matching implied by Part D of the problem. In particular, it generates a large number of 2 person families and creates large slices of both families and daughters. It then samples each a large number of times and outputs whenever there is a match between a selection from the family pool and a selection from the daughter pool. 
 
 The matching process can use two criteria - daughter matching and family matching. When daughter matching is used, then if a selected family has 2 girls, one of the two daughters is selected with a coin flip and that daughter is matched with one selected from the daughter pool, otherwise the family's only daughter is used for that purpose. When family matching is used, we match if the family selected from the family pool is the same as the family of the daughter selected from the daughter pool.
 
 It turns out that the empirical answer to Part D is 1/3 when daughter matching is used and 1/2 when family matching is used. The relative size of these answers is not too surprising since it is harder to match on daughters than on families, but it is striking when one considers that Part A, which is concerned with daughters, yields answers of 1/2, but Part B which is concerned with mothers(/families), yields answers of 1/3. 
+
+Justification for empirical results can be gained by considering just 3 representative family types and how they represent themselves in each process. The Part A process, each daughter is written out on average once a cycle.
+
+	Part A process:
+		G1g2
+		g1G2
+		Gb
+		bG
+		...
+
+This is consistent the result that the chance of a girl-girl family appearing out of the Part A process is 1/2.
+
+In the Part B process is, one GG daughter is written out in one cycle, one in the next (on average).
+
+	Part B process:
+		G1g2
+		bG
+		Gb
+		g1G2
+		bG
+		Gb
+		...
+
+This is consistent with the result that the chance of a girl-girl family appearing out of the Part B process is 1/3.
+
+Let **Mgb** be the statement that a daughter/family pair matched and it was a GB
+family. 
+
+Let **Mbg** be the statement that a daughter/family pair matched and it was a BG family.
+
+Let **Mggd** be the statement that a daughter/family pair was matched and it was a GG family.
+
+Let **Mggf** be the statenent that a family was matched and it was a GG family.
+
+The probabilities can be derived as follows:
+
+	P(Mgb)  = 1/3 * 1/4 = 1/12
+	P(Mbg)  = 1/3 * 1/4 = 1/12
+	P(Mggf) = 1/3 * 1/2 = 1/6
+	P(Mggd) = 1/6 * 1/4 * 2 = 1/12
+
+which yields:
+
+	P(GG|Mggd) 
+
+		       =        1/12
+				 -------------------
+				 1/12 + 1/12 + 1/12
+
+			   = 1/3
+
+	P(GG|Mggf) 
+
+	           =        1/6
+				 -----------------
+				 1/12 + 1/12 + 1/6
+
+			   = 1/2
+
+These results are consistent with the emprical results.
