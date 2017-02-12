@@ -3,7 +3,7 @@
 If you haven't done the problem yet, you might like to [try](MARY-JANE-K.md) it first.
 
 ---
-## ANSWERS
+## Answers
 
 The discussion below assumes that the answers to Part A, Part B and Part C are.
 
@@ -17,14 +17,14 @@ The fact that A and B yield different answers is explained by the fact that the 
 
 Part C is simply a repeat of Part B used to setup Part D but uses pseudonymous labels to simplify reasoning about this case. Not surprisingly the answers for Part B and Part C are the same.
 
-## DISCUSSION
+## Discussion
 
 Where it becomes interesting is Part D where we assert a correspondence between
 the labels used in Part C and the terms of Part A.
 
 According to Part A, K has a 1/2 chance of being a girl, according to Part C/D, K has a 1/3 chance of being a girl - apparently a contradiction.
 
-### Wnat does this apparent contradiction mean?
+### What does this apparent contradiction mean?
 
 One way to deal with the contradiction is to deny it is really a contradiction as we did when we explained away the difference between Part A and Part B above - we were sampling different abstract processes, so the fact that we get
 different abstract answers is not surprising.
@@ -32,3 +32,13 @@ different abstract answers is not surprising.
 However, Part D is still troubling, since we have sampled two different abstract processes that have yielded two different probabilistic models of the same concrete family. One asks us to believe the family will behave one way with probability 1/2, the other asks us to beieve they will behave that same way with probability of only 1/3. What now, are we meant believe about how the family will behave?
 
 It should be noted that if Part C is accurate about the "selection at random" that produces Mc, Jc and Kc, it would only produce a Mc, Jc and Kc that matches Mary, Jane and K very infrequently - with a probability proportional to the inverse of the population size. One interpretation of this observation is that the perverse implication of Part D occurs so infrequently we can ignore it. Maybe.
+
+## The Empirical Answer
+
+One way to answer the question empirically is to run a simulation with the "florida" program which has been updated
+with support for the kind of matching implied by Part D of the problem. In particular, it generates a large number of 2 person families and creates large slices of both families and daughters. It then samples each a large number of times and outputs whenever there is a match between a selection from the family pool and a selection from the daughter pool. 
+
+The match can use two criteria - daughter matching and family matching. When daughter matching is used, then if a selected family has 2 girls, one of the two daughters is selected with a coin flip and that daughter is matched with one selected from the daughter pool. When family matching us is used, we match if the family selected from the family pool is the same as the family of the daughter selected from the daughter pool.
+
+It turns out that empirical answer to Part D is 1/3 when daughter matching is used and 1/2 when family matching
+is used. The relative size of these answers is not too surprising since it is harder to match on daughters than on families, but it is striking when one considers that Part A, which is concerned with daughters yields answers of 1/2, but Part B which is concerned with mothers(/families), yields answers of 1/3 - the Part D answers are, in some sense, flipped.
