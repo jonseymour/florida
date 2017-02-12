@@ -40,5 +40,5 @@ with support for the kind of matching implied by Part D of the problem. In parti
 
 The match can use two criteria - daughter matching and family matching. When daughter matching is used, then if a selected family has 2 girls, one of the two daughters is selected with a coin flip and that daughter is matched with one selected from the daughter pool. When family matching us is used, we match if the family selected from the family pool is the same as the family of the daughter selected from the daughter pool.
 
-It turns out that empirical answer to Part D is 1/3 when daughter matching is used and 1/2 when family matching
-is used. The relative size of these answers is not too surprising since it is harder to match on daughters than on families, but it is striking when one considers that Part A, which is concerned with daughters yields answers of 1/2, but Part B which is concerned with mothers(/families), yields answers of 1/3 - the Part D answers are, in some sense, flipped.
+It turns out that the empirical answer to Part D is 1/3 when daughter matching is used and 1/2 when family matching
+is used. The relative size of these answers is not too surprising since it is harder to match on daughters than on families, but it is striking when one considers that Part A, which is concerned with daughters yields answers of 1/2, but Part B which is concerned with mothers(/families), yields answers of 1/3.
