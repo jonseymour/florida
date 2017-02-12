@@ -75,21 +75,19 @@ Q3. What is the chance that Mc will answer "Yes" if asked: "Do you have 2 daught
 
 **If you multiply the answer to Part A/Q1, Part B/Q2 and Part C/Q3 and you get either 1/8 or 1/27 you may have the "wrong" answer. Contact [Jon](mailto:jon.seymour@gmail.com) to discuss before proceeding since Part D will be more interesting that way.**
 
-You are handed a key which decodes the pseudonyms used in Part C - similar to the process the Australian Government will use to link your Census responses to third party data sources - along with all details relevant to Part A and Part C, including the means by the which the random selections of Jc/Jane and Mc/Mary were performed.
-
-It turns out that Mc = Mary, Jc = Jane and Kc = K, all from Part A of this question.
+You are handed a key which decodes the pseudonyms used in Part C. It turns out that Mc = Mary, Jc = Jane and Kc = K, all from Part A of this question.
 
 Q1. What is the chance that K/Kc will answer "Yes" if asked: "Are you a girl?"
 	
-  A) Same as Part A/Q1. B) Same as Part C/Q1. C) NFI. D) Other.
+  A) Same as Part A/Q1. B) Same as Part C/Q1. C) Other.
 
 Q2. What is the chance that Jane/Jc will answer "Yes" if asked: "Do you have a sister?"
 
-  A) Same as Part A/Q2. B) Same as Part C/Q2. C) NFI. D) Other.
+  A) Same as Part A/Q2. B) Same as Part C/Q2. C) Other.
 
 Q3. What is the chance that Mary/Mc will answer "Yes" if asked: "Do you have 2 daughters?"
 
-  A) Same as Part A/Q3. B) Same as Part C/Q3. C) NFI. D) Other.
+  A) Same as Part A/Q3. B) Same as Part C/Q3. C) Other.
 
 ---
 # Discussion
