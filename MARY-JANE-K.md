@@ -10,7 +10,7 @@ The following helps to visualise the different types of 2-child families where B
 
 ## Part A
 
-A girl, Jane, is selected at random from the set of children of a large population of 2-child families. Jane has a mum, Mary, and a sibling K. K is the sibling's initial. K's gender is known to Jane and Mary, but not to us. 
+A girl, Jane, is selected at random from the set of daughters of a large population of 2-child families. Jane has a mum, Mary, and a sibling K. K is the sibling's initial. K's gender is known to Jane and Mary, but not to us. 
 
 Given what we know about 2-child families, Jane, Mary and K:
 
@@ -29,7 +29,7 @@ Q3. What is the chance that Mary will answer "Yes" if asked: "Do you have 2 daug
 ---
 ## Part B
 
-A mother, Miriam, is selected at random from the set of mothers of a large population of 2-child families. Miriam has a daughter, Jennifer, and another child L. L is the child's initial. L's gender is known to Miriam and Jennifer, but not to us. 
+A mother, Miriam, is selected at random from the set of mothers of a large population of 2-child families referred to in Part A. Miriam has a daughter, Jennifer, and another child L. L is the child's initial. L's gender is known to Miriam and Jennifer, but not to us. 
 
 If Miriam has one daughter, Jennifer is that daughter. If she has two daughters, Jennifer is the daughter selected
 with a coin flip. The selection process does not permit the selection of mothers with 2 boys.
@@ -51,7 +51,7 @@ Q3. What is the chance that Miriam will answer "Yes" if asked: "Do you have 2 da
 ---
 ## Part C
 
-A mother, Mc, is selected at random from the set of mothers of a large population of 2-child families. Mc has a daughter, Jc, and another child Kc. Mc, Jc and Kc are all pseudonyms. Kc's gender is known to Mc and Jc, but not to us. 
+A mother, Mc, is selected at random from the set of mothers of the large population of 2-child families referred to in Part A. Mc has a daughter, Jc, and another child Kc. Mc, Jc and Kc are all pseudonyms. Kc's gender is known to Mc and Jc, but not to us. 
 
 If Mc has one daughter, Jc is that daughter. If she has two daughters, Jc is the daughter selected
 with a coin flip. The selection process does not permit the selection of mothers with 2 boys.
@@ -90,4 +90,9 @@ Q2. What is the chance that Jane/Jc will answer "Yes" if asked: "Do you have a s
 Q3. What is the chance that Mary/Mc will answer "Yes" if asked: "Do you have 2 daughters?"
 
   A) Same as Part A/Q3. B) Same as Part C/Q3. C) NFI. D) Other.
+
+---
+# Discussion
+
+Refer to the link for a [discussion](DISCUSSION-MARY-JANE-K.md) of what this means.
 
