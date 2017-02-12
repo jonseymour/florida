@@ -176,6 +176,44 @@ func uniqueFamilies() func(in <-chan *family, out chan<- *family) {
 	}
 }
 
+func sampleAndMatch(n int) func(in <-chan *family, out chan<- *family) {
+	families := []*family{}
+	daughters := []*child{}
+
+	return func(in <-chan *family, out chan<- *family) {
+		for f := range in {
+			families = append(families, f)
+			if f.first.girl {
+				daughters = append(daughters, f.first)
+			}
+			if f.second.girl {
+				daughters = append(daughters, f.second)
+			}
+		}
+		i := 0
+		for i < n {
+			x := rand.Int31n(int32(len(families)))
+			y := rand.Int31n(int32(len(daughters)))
+			if families[x] == daughters[y].family {
+				if families[x].isGG() {
+					if coinFlip() {
+						if families[x].first == daughters[y] {
+							continue
+						}
+					} else {
+						if families[x].second == daughters[y] {
+							continue
+						}
+					}
+				}
+				out <- families[x]
+				i++
+			}
+		}
+		close(out)
+	}
+}
+
 // accounting stage`
 func accounting(n int, girls bool) func(in <-chan *family, done chan<- struct{}) {
 	return func(in <-chan *family, done chan<- struct{}) {
@@ -210,12 +248,14 @@ func main() {
 	var floridaFlag bool
 	var uniqueFlag bool
 	var atLeastOneGirlFlag bool
+	var sampleAndMatchFlag bool
 
 	flag.Float64Var(&probability, "probability", 0.001, "Probability of naming a girl florida.")
 	flag.IntVar(&n, "families", 1000000, "Number of families.")
 	flag.BoolVar(&girlsFlag, "girls", false, "Select girls, not families.")
 	flag.BoolVar(&floridaFlag, "florida", false, "Select girls named Florida.")
 	flag.BoolVar(&atLeastOneGirlFlag, "at-least-one-girl", false, "Select families with at least one girl.")
+	flag.BoolVar(&sampleAndMatchFlag, "sample-and-match", false, "Sample daughters and families and output if matched.")
 	flag.BoolVar(&uniqueFlag, "unique-families", false, "Count unique families of girls, not girls.")
 	flag.Parse()
 
@@ -254,6 +294,11 @@ func main() {
 	if uniqueFlag {
 		p4 := make(chan *family)
 		go uniqueFamilies()(p3, p4)
+		p3 = p4
+	}
+	if sampleAndMatchFlag {
+		p4 := make(chan *family)
+		go sampleAndMatch(n)(p3, p4)
 		p3 = p4
 	}
 	go accounting(n, girlsFlag && !uniqueFlag)(p3, done)
