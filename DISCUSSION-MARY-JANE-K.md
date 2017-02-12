@@ -30,3 +30,5 @@ One way to deal with the contradiction is to deny it is really a contradiction a
 different abstract answers is not surprising.
 
 However, Part D is still troubling, since we have sampled two different abstract processes that have yielded two different probabilistic models of the same concrete family. One asks us to believe the family will behave one way with probability 1/2, the other asks us to beieve they will behave that same way with probability of only 1/3. What now, are we meant believe about how the family will behave?
+
+It should be noted that if Part C is accurate about the "selection at random" that produces Mc, Jc and Kc, it would only produce a Mc, Jc and Kc that matches Mary, Jane and K very infrequently - with a probability proportional to the inverse of the population size. One interpretation of this observation is that the perverse implication of Part D occurs so infrequently we can ignore it. Maybe.
