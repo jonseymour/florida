@@ -56,7 +56,7 @@ A mother, Mc, is selected at random from the set of mothers of the large populat
 If Mc has one daughter, Jc is that daughter. If she has two daughters, Jc is the daughter selected
 with a coin flip. The selection process does not permit the selection of mothers with 2 boys.
 
-Given what we know about 2-child families, Mc, Hc and Kc:
+Given what we know about 2-child families, Mc, Jc and Kc:
 
 Q1. What is the chance that Kc will answer "Yes" if asked: "Are you a girl?"
 
