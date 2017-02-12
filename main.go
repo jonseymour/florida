@@ -176,7 +176,11 @@ func uniqueFamilies() func(in <-chan *family, out chan<- *family) {
 	}
 }
 
-func sampleAndMatch(n int) func(in <-chan *family, out chan<- *family) {
+// Reproduce Part D of the Mary, Jane K problem.
+//
+// Randomly sample families and daughters. If we pick the same family and
+// the same daughter, we output the family otherwise we drop it.
+func sampleAndMatch(n int, daughtersMatchFlag bool) func(in <-chan *family, out chan<- *family) {
 	families := []*family{}
 	daughters := []*child{}
 
@@ -195,15 +199,13 @@ func sampleAndMatch(n int) func(in <-chan *family, out chan<- *family) {
 			x := rand.Int31n(int32(len(families)))
 			y := rand.Int31n(int32(len(daughters)))
 			if families[x] == daughters[y].family {
-				if families[x].isGG() {
-					if coinFlip() {
-						if families[x].first == daughters[y] {
-							continue
-						}
-					} else {
-						if families[x].second == daughters[y] {
-							continue
-						}
+				if daughtersMatchFlag {
+					d := families[x].first
+					if !d.girl || families[x].second.girl && coinFlip() {
+						d = families[x].second
+					}
+					if d != daughters[y] {
+						continue
 					}
 				}
 				out <- families[x]
@@ -214,7 +216,7 @@ func sampleAndMatch(n int) func(in <-chan *family, out chan<- *family) {
 	}
 }
 
-// accounting stage`
+// accounting stage
 func accounting(n int, girls bool) func(in <-chan *family, done chan<- struct{}) {
 	return func(in <-chan *family, done chan<- struct{}) {
 		c := 0
@@ -249,6 +251,7 @@ func main() {
 	var uniqueFlag bool
 	var atLeastOneGirlFlag bool
 	var sampleAndMatchFlag bool
+	var daughtersMatchFlag bool
 
 	flag.Float64Var(&probability, "probability", 0.001, "Probability of naming a girl florida.")
 	flag.IntVar(&n, "families", 1000000, "Number of families.")
@@ -256,6 +259,7 @@ func main() {
 	flag.BoolVar(&floridaFlag, "florida", false, "Select girls named Florida.")
 	flag.BoolVar(&atLeastOneGirlFlag, "at-least-one-girl", false, "Select families with at least one girl.")
 	flag.BoolVar(&sampleAndMatchFlag, "sample-and-match", false, "Sample daughters and families and output if matched.")
+	flag.BoolVar(&daughtersMatchFlag, "daughters-match", true, "Insist daughters match during sampling.")
 	flag.BoolVar(&uniqueFlag, "unique-families", false, "Count unique families of girls, not girls.")
 	flag.Parse()
 
@@ -291,14 +295,14 @@ func main() {
 		go floridaFamily()(p3, p4)
 		p3 = p4
 	}
+	if sampleAndMatchFlag {
+		p4 := make(chan *family)
+		go sampleAndMatch(n, daughtersMatchFlag)(p3, p4)
+		p3 = p4
+	}
 	if uniqueFlag {
 		p4 := make(chan *family)
 		go uniqueFamilies()(p3, p4)
-		p3 = p4
-	}
-	if sampleAndMatchFlag {
-		p4 := make(chan *family)
-		go sampleAndMatch(n)(p3, p4)
 		p3 = p4
 	}
 	go accounting(n, girlsFlag && !uniqueFlag)(p3, done)
