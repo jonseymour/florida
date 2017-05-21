@@ -91,11 +91,17 @@ func atLeastOneGirl() func(in <-chan *family, out chan<- *family) {
 }
 
 // names each girl in a family
-func name(probability float64) func(in <-chan *family, out chan<- *family) {
+func name(probability float64, noDuplicates bool) func(in <-chan *family, out chan<- *family) {
 	return func(in <-chan *family, out chan<- *family) {
 		for f := range in {
 			f.first.nameGirl(probability)
-			f.second.nameGirl(probability)
+			probability2 := probability
+			if noDuplicates {
+				if f.first.isAGirlNamedFlorida() {
+					probability2 = -1.0
+				}
+			}
+			f.second.nameGirl(probability2)
 			out <- f
 		}
 		close(out)
@@ -252,6 +258,7 @@ func main() {
 	var atLeastOneGirlFlag bool
 	var sampleAndMatchFlag bool
 	var daughtersMatchFlag bool
+	var noDuplicatesFlag bool
 
 	flag.Float64Var(&probability, "probability", 0.001, "Probability of naming a girl florida.")
 	flag.IntVar(&n, "families", 1000000, "Number of families.")
@@ -261,6 +268,7 @@ func main() {
 	flag.BoolVar(&sampleAndMatchFlag, "sample-and-match", false, "Sample daughters and families and output if matched.")
 	flag.BoolVar(&daughtersMatchFlag, "daughters-match", true, "Insist daughters match during sampling.")
 	flag.BoolVar(&uniqueFlag, "unique-families", false, "Count unique families of girls, not girls.")
+	flag.BoolVar(&noDuplicatesFlag, "no-duplicate-names", false, "Do not allow duplicate names.")
 	flag.Parse()
 
 	p1 := make(chan *family)
@@ -269,7 +277,7 @@ func main() {
 	done := make(chan struct{})
 
 	go generate(n)(p1)
-	go name(probability)(p1, p2)
+	go name(probability, noDuplicatesFlag)(p1, p2)
 	if atLeastOneGirlFlag {
 		p4 := make(chan *family)
 		go atLeastOneGirl()(p2, p4)
